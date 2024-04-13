@@ -5,3 +5,6 @@ hien thi nhiet do win10 o toolbar
 ---percentage
 
 hien thi phan tram pin win10 o toolbar
+
+---rarreg.key
+crack winrar (keo tha vaof rar)
