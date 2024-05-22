@@ -1,0 +1,28 @@
+python installer:
+pip install construct==2.10.68
+pip install pyusb==1.2.1
+pip install usb==0.0.83.dev0
+
+DS4 Calibration
+If you are here, there are good probabilities you want to recalibrate your DS4. In that case, the script for you is ds4-calibration-tool.py.
+
+The DS4 by default will undo changes after a reset or after it goes in standby. This is good to test calibration and see if the result is good enough for you without messing everything up.
+
+At some point you may want to make changes permanent. To do that, you should change the flash-mirror status using ds4-tool. I suggest to switch back to temporary right after the calibration is done.
+
+Here it follows an example:use Windows PowerShell
+
+# 0. Set location of tool
+set-location "folder link"
+
+# 1. Know if changes are temporary or permanent (0: permanent; 1: temporary)
+python ./ds4-tool.py get-flash-mirror-status 
+
+# 2. Change flash mirror behavior to permanent
+python ./ds4-tool.py set-flash-mirror-status 0
+
+# 3. Do calibration here
+python ./ds4-calibration-tool.py
+
+# 4. Change flash mirror behavior back to temporary
+python ./ds4-tool.py set-flash-mirror-status 1
