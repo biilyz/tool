@@ -12,4 +12,5 @@ chay CMD "Shell:startup"
 copy tha vao folder hien ra
 
 ---rarreg.key
-crack winrar (keo tha vaof rar)
+
+crack winrar (keo tha vao rar)
