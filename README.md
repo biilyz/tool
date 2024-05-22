@@ -5,8 +5,8 @@ hien thi nhiet do win10 o toolbar
 
 ---percentage
 
-hien thi phan tram pin win10 o toolbar
-chay CMD "Shell:startup"
+hien thi phan tram pin win10 o toolbar /n
+chay CMD "Shell:startup" /n
 copy tha vao folder hien ra
 
 ---rarreg.key
