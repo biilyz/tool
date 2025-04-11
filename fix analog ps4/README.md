@@ -1,4 +1,4 @@
-# 🇻🇳 DS4 Tools - Hướng dẫn sử dụng bằng Tiếng Việt
+# VN-DS4-Tools - Hướng dẫn sử dụng 
 
 **DS4 Tools** là công cụ giúp bạn **bật/tắt chế độ Flash** và **hiệu chỉnh tay cầm DualShock 4 (DS4)** trên Windows. Dành cho người dùng yêu thích sự đơn giản, không cần phần mềm nặng nề – chỉ cần Python và một vài script dòng lệnh!
 
