@@ -1,108 +1,77 @@
-# ds4-tools
+# 🇻🇳 DS4 Tools - Hướng dẫn sử dụng bằng Tiếng Việt
 
-This repo contains some Python scripts I use to play and reverse-engineer the
-DualShock 4 controller.
+**DS4 Tools** là công cụ giúp bạn **bật/tắt chế độ Flash** và **hiệu chỉnh tay cầm DualShock 4 (DS4)** trên Windows. Dành cho người dùng yêu thích sự đơn giản, không cần phần mềm nặng nề – chỉ cần Python và một vài script dòng lệnh!
 
-## Warning
+---
 
-Use these files at your own risk and be ready to throw away your controller
-because it could stop working.
+## 🧰 Yêu cầu hệ thống
 
-They have been tested on **only two DS4** on planet Earth, so any slight change
-of your DS4 w.r.t mine can lead to bricking it.
+- Windows 10/11
+- Python 3.7 trở lên
+- Tay cầm DualShock 4 (cắm qua cáp USB)
+- Trình điều khiển `libusb` (sử dụng Zadig)
 
-## Contents
+---
 
-- `ds4-tool.py` can be used to play with undocumented commands of your DualShock 4
-- `ds4-calibration-tool.py` can be used to calibrate analog sticks or triggers. It has a nice TUI.
+## 🔧 Cài đặt nhanh
 
-## How to use them
+### 1. Cài Python và thư viện cần thiết
 
-1. Clone the repo and go into the directory
-```
-$ git clone <repo link>
-$ cd ds4-tools
-```
+> ⚠️ Trong quá trình cài đặt Python từ [python.org](https://www.python.org/downloads/), nhớ **tick chọn "Add Python to PATH"**
 
-2. Install dependencies
-```
-$ virtualenv venv
-$ . venv/bin/activate
-$ pip install -r requirements.txt
+Mở `CMD` hoặc `PowerShell` và chạy:
+
+```bash
+pip install construct==2.10.68
+pip install pyusb==1.2.1
+pip install usb==0.0.83.dev0
 ```
 
-3. Play with the scripts
-```
-$ python3 script.py
-```
+---
 
-## Example
+### 2. Cài driver libusb bằng Zadig
 
-```
-$ python3 ds4-tool.py info
+1. Cắm tay cầm DS4 vào máy tính
+2. Tải **Zadig** tại: [https://zadig.akeo.ie](https://zadig.akeo.ie)
+3. Mở Zadig > vào menu `Options > List All Devices`
+4. Chọn **Wireless Controller**
+5. Chọn driver `libusb-win32` và bấm **Replace Driver**
 
-[+] Waiting for device VendorId=054c ProductId=09cc
-Compiled at: Sep 21 2018 04:50:51
-hw_ver:0100.b400
-sw_ver:00000001.a00a sw_series:2010
-code size:0002a000
+---
 
-```
+## 🚀 Sử dụng công cụ
 
-## DS4 Calibration
+Thư mục này có 2 file `.bat` dùng để thao tác với tay cầm:
 
-If you are here, there are good probabilities you want to recalibrate your DS4.
-In that case, the script for you is `ds4-calibration-tool.py`.
+### 🔁 Bật chế độ Flash (cho phép hiệu chỉnh)
 
-The DS4 by default will undo changes after a reset or after it goes in standby.
-This is good to test calibration and see if the result is good enough for you
-without messing everything up.
-
-At some point you may want to make changes permanent. To do that, you
-should change the flash-mirror status using ds4-tool. 
-I suggest to switch back to temporary right after the calibration is done.
-
-Here it follows an example:
-```
-# 1. Know if changes are temporary or permanent (0: permanent; 1: temporary)
-$ ./ds4-tool.py get-flash-mirror-status 
-
-# 2. Change flash mirror behavior to permanent
-$ ./ds4-tool.py set-flash-mirror-status 0
-
-# 3. Do calibration here
-$ ./ds4-calibration-tool.py
-
-# 4. Change flash mirror behavior back to temporary
-$ ./ds4-tool.py set-flash-mirror-status 1
-```
-
-## Notes for Windows
-
-The tools won't detect your DualShock 4 until you change default driver to the libusb one.
-
-The easiest way to do this is to use the [Zadig](https://zadig.akeo.ie/ "Zadig's Homepage") software.
-
-1. Download and run Zadig
-
-2. Open `Options` menu and check `List All Devices` item
-![zadig_setup.png](img/zadig_setup.png)
-
-3. Select your DualShock 4 from list and change the driver to libusb-win32 one
-  * `Wireless Controller` [054c:05c4] for the 1st revision
-  ![zadig_ds4r1.png](img/zadig_ds4r1.png)
-  * `Wireless Controller (Interface 0)` [054c:09cc:00] for the 2nd revision
-  ![zadig_ds4r2.png](img/zadig_ds4r2.png)
-
-4. Press `Replace Driver` button and agree with every other question (if any)
-
-## Notes for Mac OS X
-
-If you get `usb.core.NoBackendError: No backend available` error, you should
-install `libusb`.
-
-Using Homebrew you can install all required tools with this command:
+Chạy file:
 
 ```
-$ brew install git python virtualenv libusb
+flashmirror.bat
 ```
+
+### 🧪 Hiệu chỉnh tay cầm DS4
+
+Chạy file:
+
+```
+ds4calibVN.bat
+```
+
+Sau khi hoàn tất, tay cầm đã được hiệu chỉnh chính xác.
+
+> 🛡️ Bạn có thể chạy lại `flashmirror.bat` để đưa tay cầm về **chế độ Cấm Flash** nhằm đảm bảo an toàn khi sử dụng bình thường.
+
+---
+
+## 💡 Gợi ý
+
+- Script chỉ hỗ trợ Windows.
+- Cần hỗ trợ hoặc muốn đóng góp, hãy mở issue hoặc pull request trên repo này.
+
+---
+
+
+
+**Chúc bạn tinh chỉnh tay cầm DS4 thành công! 🎮🇻🇳**
